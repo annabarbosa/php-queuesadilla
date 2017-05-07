@@ -19,12 +19,12 @@ test-docker:
 	cp phpunit.xml.dist phpunit.xml && \
 	phpcs --standard=psr2 src/ && \
 	vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode && \
-	phpunit
+	vendor/bin/phpunit
 
 
 .PHONY: test-docker-rabbitmq
 test-docker-rabbitmq:
 	@service rabbitmq-server start > /dev/null && \
 	cp phpunit.xml.dist phpunit.xml && \
-	phpunit tests/josegonzalez/Queuesadilla/Event/EventTest.php
-	# phpunit tests/josegonzalez/Queuesadilla/Engine/RabbitmqEngineTest.php
+	vendor/bin/phpunit tests/josegonzalez/Queuesadilla/Event/EventTest.php
+	# vendor/bin/phpunit tests/josegonzalez/Queuesadilla/Engine/RabbitmqEngineTest.php
