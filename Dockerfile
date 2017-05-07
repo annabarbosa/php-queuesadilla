@@ -48,6 +48,4 @@ ENV BEANSTALK_URL="beanstalk://127.0.0.1:11300?queue=default&timeout=1" \
     MEMORY_URL="synchronous:///?queue=default&timeout=1" \
     POSTGRES_URL="pgsql://travis:asdf12@127.0.0.1:5432/database_name?queue=default"
 
-ADD . /app
-
-RUN make test-docker
+VOLUME ["/app"]

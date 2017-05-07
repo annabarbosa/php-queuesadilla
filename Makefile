@@ -17,7 +17,8 @@ test-docker:
 	su postgres -c "psql database_name -c \"ALTER ROLE travis WITH Superuser;\"" && \
 	su postgres -c "psql database_name -c \"GRANT ALL PRIVILEGES ON DATABASE database_name TO travis;\"" && \
 	cp phpunit.xml.dist phpunit.xml && \
-	phpcs --standard=psr2 src/ && \
+	composer install --dev && \
+	vendor/bin/phpcs --standard=psr2 src/ && \
 	vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode && \
 	vendor/bin/phpunit
 
