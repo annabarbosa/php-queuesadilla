@@ -5,14 +5,14 @@ test-docker:
 	service rabbitmq-server start > /dev/null && \
 	service redis-server start > /dev/null && \
 	mysql -u root -e 'CREATE DATABASE database_name;' && \
-	mysql -u root database_name < config/schema-mysql.sql && \
+	mysql -u root database_name < contrib/schema-mysql.sql && \
 	mysql -u root -e "CREATE USER 'travis'@'127.0.0.1' IDENTIFIED BY '';" && \
 	mysql -u root -e "GRANT ALL PRIVILEGES ON database_name.* TO 'travis'@'127.0.0.1' WITH GRANT OPTION;" && \
 	mysql -u root -e "DELETE FROM mysql.user WHERE User=''; FLUSH PRIVILEGES;" && \
 	mysqladmin -u root password password && \
 	service postgresql start && \
 	su postgres -c "createdb database_name" && \
-	su postgres -c "psql -d database_name -f config/schema-pgsql.sql" && \
+	su postgres -c "psql -d database_name -f contrib/schema-pgsql.sql" && \
 	su postgres -c "psql database_name -c \"CREATE USER travis password 'asdf12';\"" && \
 	su postgres -c "psql database_name -c \"ALTER ROLE travis WITH Superuser;\"" && \
 	su postgres -c "psql database_name -c \"GRANT ALL PRIVILEGES ON DATABASE database_name TO travis;\"" && \

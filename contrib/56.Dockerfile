@@ -35,9 +35,7 @@ RUN \
 ADD composer.json /app/composer.json
 WORKDIR /app
 
-RUN \
-    composer install > /dev/null && \
-    pear install --alldeps PHP_CodeSniffer > /dev/null
+RUN pear install --alldeps PHP_CodeSniffer > /dev/null
 
 ENV BEANSTALK_URL="beanstalk://127.0.0.1:11300?queue=default&timeout=1" \
     MEMORY_URL="memory:///?queue=default&timeout=1" \
