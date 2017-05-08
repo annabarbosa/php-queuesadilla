@@ -27,5 +27,14 @@ test-docker:
 test-docker-rabbitmq:
 	@service rabbitmq-server start > /dev/null && \
 	cp phpunit.xml.dist phpunit.xml && \
-	vendor/bin/phpunit tests/josegonzalez/Queuesadilla/Event/EventTest.php
-	# vendor/bin/phpunit tests/josegonzalez/Queuesadilla/Engine/RabbitmqEngineTest.php
+	vendor/bin/phpunit tests/josegonzalez/Queuesadilla/Engine/RabbitmqEngineTest.php
+
+.PHONY: test-56
+test-56:
+	docker build -f contrib/56.Dockerfile -t queuesadilla-test-56 .
+	docker run --rm -v $(PWD):/app queuesadilla-test-56 make test-docker
+
+.PHONY: test-7
+test-7:
+	docker build -f contrib/7.Dockerfile -t queuesadilla-test-7 .
+	docker run --rm -v $(PWD):/app queuesadilla-test-7 make test-docker
