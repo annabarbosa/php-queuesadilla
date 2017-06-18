@@ -22,7 +22,7 @@ RUN \
     apt-get -qq install -qq -y language-pack-en-base
 RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && \
     apt-get -qq update
-RUN apt-get -qq install -qq -y php5.6-cli php5.6-curl php5.6-mysql php5.6-pgsql php-pear php5.6-xdebug php5.6-redis php5.6-dom php5.6-zip php5.6-xml
+RUN apt-get -qq install -qq -y php5.6-cli php5.6-curl php5.6-mysql php5.6-pgsql php-pear php5.6-xdebug php5.6-redis php5.6-dom php5.6-zip php5.6-xml php5.6-bcmath php5.6-mbstring
 
 RUN \
     curl -sS https://getcomposer.org/installer | php && \

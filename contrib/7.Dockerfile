@@ -22,7 +22,7 @@ RUN \
     apt-get -qq install -qq -y language-pack-en-base
 RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && \
     apt-get -qq update
-RUN apt-get -qq install -qq -y php7.0-cli php7.0-curl php7.0-mysql php7.0-pgsql php-pear php7.0-xdebug php7.0-redis php7.0-xml
+RUN apt-get -qq install -qq -y php7.0-cli php7.0-curl php7.0-mysql php7.0-pgsql php-pear php7.0-xdebug php7.0-redis php7.0-xml php7.0-bcmath php7.0-mbstring
 
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
